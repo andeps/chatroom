@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.229.111:3306/vuepro?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: vuepro
+    password: vuepro.zxm
+  druid:
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: testWhileIdle
+    testOnBorrow: false
+    testOnReturn: testOnReturn
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+logging:
+  path: D:/work/baseWork/base/logs
+  file: D:/work/baseWork/base/mony.log
+myConfig:
+  accessDirectory: /upload/**
+  mappingUrl: D:/work/baseWork/base/upload/
+netty:
+  host: 127.0.0.1
+  port: 9090

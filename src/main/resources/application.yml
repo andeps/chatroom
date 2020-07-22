@@ -1,0 +1,47 @@
+server:
+  port: 8099
+  servlet:
+    context-path: /fa
+  max-http-header-size: 4048576
+  undertow:
+    direct-buffers: true
+    max-http-post-size: -1B
+spring:
+  profiles:
+    include: dev
+  http:
+    encoding:
+      charset: utf-8
+      force: true
+      enabled: true
+mybatis-plus:
+  mapper-locations:
+    - classpath*:mybatis/base/base.xml
+    - classpath*:mybatis/*.xml
+  type-aliases-package: mon.sof.project.**.entity
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: mysql
+    refresh: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: countSql
+logging:
+  level:
+    mon:
+      sof: debug
+  file:
+    max-history: 30
+    max-size: 512MB
